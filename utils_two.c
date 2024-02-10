@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:05:44 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/09 23:59:45 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/10 20:05:16 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ft_strlenn(const char *s)
 
 void	argv_counter(char **av, t_data *data)
 {
-	while(av[data->argv_count])
+	while (av[data->argv_count])
 		data->argv_count++;
 }
 

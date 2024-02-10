@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:01:16 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/10 01:53:18 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/10 20:05:58 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,19 +93,19 @@ char	**ft_split(char *s, char c)
 
 void	check_sign(char **tab, t_data *data)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	while(tab[i])
+	while (tab[i])
 	{
-		while(tab[i][j])
+		while (tab[i][j])
 		{
-			if((tab[i][j] == '+' && tab[i][j + 1] == '+')
+			if ((tab[i][j] == '+' && tab[i][j + 1] == '+')
 				|| (tab[i][j] == '-' && tab[i][j + 1] == '-'))
 			{
-				if(data->i_bool == 1)
+				if (data->i_bool == 1)
 					args_error1(tab, data);
 				else
 					simple_error(data);

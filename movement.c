@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:08:09 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/09 22:41:27 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/10 20:00:45 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	swap(t_list **x)
 {
-	t_list *first;
-	t_list *second;
+	t_list	*first;
+	t_list	*second;
+	int		tmp;
 
-	int tmp;
 	first = *x;
 	second = (*x)->next;
 	tmp = first->content;
@@ -27,12 +27,12 @@ void	swap(t_list **x)
 
 void	rotate(t_list **x)
 {
-	t_list *start;
-	t_list *tmp;
+	t_list	*start;
+	t_list	*tmp;
 
 	tmp = (*x)->next;
 	start = *x;
-	while((*x)->next != NULL)
+	while ((*x)->next != NULL)
 		(*x) = (*x)->next;
 	(*x)-> next = start;
 	start->next = NULL;
@@ -41,10 +41,10 @@ void	rotate(t_list **x)
 
 void	reverse_rotate(t_list **x)
 {
-	t_list *start;
+	t_list	*start;
 
 	start = *x;
-	while((*x)->next->next != NULL)
+	while ((*x)->next->next != NULL)
 		(*x) = (*x)->next;
 	(*x)->next->next = start;
 	start = (*x)->next;
@@ -55,20 +55,20 @@ void	reverse_rotate(t_list **x)
 // top num A go to Top of B
 void	push_b(t_list **a, t_list **b)
 {
-    t_list *topA = *a;
-    *a = (*a)->next;
+	t_list	*topa;
 
-    // Add the removed element to the top of list A
-    topA->next = *b;
-    *b = topA;
+	topa = *a;
+	*a = (*a)->next;
+	topa->next = *b;
+	*b = topa;
 }
 
 void	push_a(t_list **a, t_list **b)
 {
-    t_list *topB = *b;
-    *b = (*b)->next;
+	t_list	*topb;
 
-    // Add the removed element to the top of list A
-    topB->next = *a;
-    *a = topB;
+	topb = *b;
+	*b = (*b)->next;
+	topb->next = *a;
+	*a = topb;
 }

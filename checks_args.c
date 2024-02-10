@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:29:16 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/10 01:40:20 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/10 20:04:08 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,23 @@
 void	check_only_num(char **char_av, t_data *data)
 {
 	int	j;
-	int i;
+	int	i;
 
 	j = 0;
 	i = 0;
 	while (char_av[i])
 	{
-		while(char_av[i][j])
+		while (char_av[i][j])
 		{
 			if (!((char_av[i][j] >= '0' && char_av[i][j] <= '9')
 				|| char_av[i][j] == ' '
 				|| char_av[i][j] == '+' || char_av[i][j] == '-'))
-				{
-					if(data->i_bool == 1)
-						args_error1(char_av, data);
-					else
-						simple_error(data);
-				}
+			{
+				if (data->i_bool == 1)
+					args_error1(char_av, data);
+				else
+					simple_error(data);
+			}
 			j++;
 		}
 		i++;
@@ -44,7 +44,7 @@ char	**is_one_arg(int ac, char **av, t_data *data)
 	if (ac == 2)
 	{
 		data->i_bool = 1;
-		av = ft_split(av[1] , ' ');
+		av = ft_split(av[1], ' ');
 		check_only_num(av, data);
 	}
 	else
@@ -58,11 +58,11 @@ char	**is_one_arg(int ac, char **av, t_data *data)
 
 int	check_double(t_list **a)
 {
-	t_list *current;
-	t_list *nbr;
+	t_list	*current;
+	t_list	*nbr;
 
 	current = *a;
-	nbr =	*a;
+	nbr = *a;
 	current = current->next;
 	while (nbr != NULL)
 	{
@@ -85,7 +85,7 @@ int	check_double(t_list **a)
 
 void	check_nobody_else(char **av, t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (av[i + 1] == NULL)
@@ -97,14 +97,14 @@ void	check_nobody_else(char **av, t_data *data)
 	}
 }
 
-void	stack_a_isSorted(char **tab, t_data *data, t_list **a)
+void	stack_a_is_sorted(char **tab, t_data *data, t_list **a)
 {
-	t_list *current;
-	int	greater;
+	t_list	*current;
+	int		greater;
 
 	greater = 0;
 	current = *a;
-	while(current->next != NULL)
+	while (current->next != NULL)
 	{
 		if (current->content > current->next->content)
 		{
@@ -113,5 +113,5 @@ void	stack_a_isSorted(char **tab, t_data *data, t_list **a)
 		current = current->next;
 	}
 	if (greater == 0)
-		double_error(tab, data, *a);
+		already_sorted(tab, data, *a);
 }

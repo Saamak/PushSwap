@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:17:26 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/10 00:57:52 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/10 20:04:59 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@
 // 	(*b) = first;
 // }
 
-void	first_put_lst(t_list **a, char **charnum_clean)
+void	first_put_lst(t_list **a, char **charnum_clean, t_data *data)
 {
-	int i;
-	t_list *first;
+	int		i;
+	t_list	*first;
 
 	i = 0;
 	*a = malloc(sizeof(t_list));
 	(*a)->content = ft_atoi(charnum_clean[i]);
+	(*a)->index = 0;
 	first = *a;
 	i++;
 	while (charnum_clean[i])
@@ -43,12 +44,10 @@ void	first_put_lst(t_list **a, char **charnum_clean)
 		(*a)->next = malloc(sizeof(t_list));
 		*a = (*a)->next;
 		(*a)->content = ft_atoi(charnum_clean[i]);
+		data->index++;
+		(*a)->index = data->index;
 		i++;
 	}
 	(*a)->next = NULL;
 	(*a) = first;
 }
-
-
-
-

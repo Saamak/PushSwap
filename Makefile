@@ -6,7 +6,7 @@
 #    By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 16:43:36 by ppitzini          #+#    #+#              #
-#    Updated: 2024/02/10 00:57:08 by ppitzini         ###   ########.fr        #
+#    Updated: 2024/02/10 16:44:36 by ppitzini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC 	   = errors_args \
 			 checks_args \
 			 movement \
 			 free_funct \
-			#  sort_algorythm \
+			 sort_algorythm \
 
 CC	= gcc
 
