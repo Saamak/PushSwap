@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:52:45 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/11 20:30:51 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/11 20:50:55 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int	main(int ac, char **av)
 	first_put_lst(&a, list, data);
 	stack_a_is_sorted(list, data, &a);
 	if (check_double(&a))
-		double_error(list, data, a);
+		double_error(list, data, &a);
 	find_index(&a);
 	if (data->argv_count <= 5)
 		simple_sort_hub(&a, &b, data, list);
 	ft_sort_big_list(&a, &b);
-	success(list, data, a, b);
+	success(list, data, &a, &b);
 	return (0);
 }
 
@@ -61,5 +61,5 @@ void	stack_a_is_sorted(char **tab, t_data *data, t_list **a)
 		current = current->next;
 	}
 	if (greater == 0)
-		already_sorted(tab, data, *a);
+		already_sorted(tab, data, a);
 }

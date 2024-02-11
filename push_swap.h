@@ -6,14 +6,13 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 18:28:16 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/11 20:31:11 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/11 20:50:10 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "stdio.h"
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -41,7 +40,7 @@ int		ft_strlenn(const char *s);
 void	argv_counter(char **av, t_data *data);
 char	*ft_calloc(size_t nmemb, size_t size);
 void	free_tab(char **tab);
-void	success(char **tab, t_data *data, t_list *a, t_list *b);
+void	success(char **tab, t_data *data, t_list **a, t_list **b);
 
 // LIST
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -51,15 +50,15 @@ t_list	*ft_lstlast(t_list *lst);
 void	ft_lstnew(t_list **a, int content);
 void	first_put_lst(t_list **a, char **charnum_clean, t_data *data);
 char	**is_one_arg(int ac, char **av, t_data *data);
-void	free_list(t_list *head);
+void	free_list(t_list **head);
 t_data	*data_s_init(t_data *data);
 int		ft_lstsize(t_list *lst);
 
 // ERROR
 void	args_error1(char **tab, t_data *data);
 void	simple_error(t_data *data);
-void	double_error(char **tab, t_data *data, t_list *a);
-void	already_sorted(char **tab, t_data *data, t_list *a);
+void	double_error(char **tab, t_data *data, t_list **a);
+void	already_sorted(char **tab, t_data *data, t_list **a);
 
 //MOVEMENT
 void	swap_a(t_list **a);

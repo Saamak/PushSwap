@@ -6,7 +6,7 @@
 #    By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 16:43:36 by ppitzini          #+#    #+#              #
-#    Updated: 2024/02/11 18:23:54 by ppitzini         ###   ########.fr        #
+#    Updated: 2024/02/11 21:47:13 by ppitzini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC 	   = errors_args \
 			 simple_sort \
 			 rotate \
 
-CC	= gcc
+CC	= cc
 
 CFLAGS	= -Wall -Wextra -Werror -g
 

@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 23:05:18 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/10 20:04:51 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/11 20:52:44 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ void	free_tab(char **tab)
 	}
 }
 
-void	free_list(t_list *head)
+void	free_list(t_list **head)
 {
 	t_list	*current;
 
-	current = head;
-	while (head != NULL)
+	current = (*head);
+	while ((*head) != NULL)
 	{
-		head = head->next;
+		(*head) = (*head)->next;
 		free(current);
-		current = head;
+		current = (*head);
 	}
 }

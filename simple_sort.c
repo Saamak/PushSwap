@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 21:55:06 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/11 18:27:04 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/11 20:53:33 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	simple_sort_hub(t_list **a, t_list **b, t_data *data, char **tab)
 		sort_four(a, b);
 	else if (data->argv_count == 5)
 		sort_five(a, b);
-	success(tab, data, *a, *b);
+	success(tab, data, a, b);
 }
 
 void	sort_three(t_list **a)
