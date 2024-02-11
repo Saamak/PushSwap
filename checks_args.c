@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:29:16 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/10 20:04:08 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/11 20:19:33 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,61 @@ void	check_only_num(char **char_av, t_data *data)
 	}
 }
 
-char	**is_one_arg(int ac, char **av, t_data *data)
+char	**create_av(int ac, char **av, t_data *data)
 {
-	if (ac == 2)
+	char	**result;
+	char	*args;
+	int		i;
+
+	i = 1;
+	args = ft_calloc(1, sizeof (char));
+	while (i <= (ac - 1))
 	{
-		data->i_bool = 1;
-		av = ft_split(av[1], ' ');
-		check_only_num(av, data);
+		args = join_av(args, av[i]);
+		i++;
 	}
-	else
+	result = ft_split(args, ' ');
+	free(args);
+	argv_counter(result, data);
+	return (result);
+}
+
+char	*join_av(char *args, char *av)
+{
+	char	*tmp;
+	char	*joined;
+
+	tmp = ft_strjoin(av, " ");
+	joined = ft_strjoin(args, tmp);
+	free (args);
+	free (tmp);
+	return (joined);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*result;
+	int		i;
+	int		len_all;
+	int		j;
+
+	j = 0;
+	i = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	len_all = ft_strlenn((char *)s1) + ft_strlenn((char *)s2);
+	result = malloc(sizeof(char) * len_all + 1);
+	if (result == NULL)
+		return (NULL);
+	while (s1[i] != '\0')
 	{
-		av ++;
-		check_only_num(av, data);
+		result[i] = s1[i];
+		i++;
 	}
-	check_nobody_else(av, data);
-	return (av);
+	while (s2[j] != '\0')
+		result[i++] = s2[j++];
+	result[i] = '\0';
+	return (result);
 }
 
 int	check_double(t_list **a)
@@ -81,37 +121,4 @@ int	check_double(t_list **a)
 		}
 	}
 	return (0);
-}
-
-void	check_nobody_else(char **av, t_data *data)
-{
-	int	i;
-
-	i = 0;
-	if (av[i + 1] == NULL)
-	{
-		if (data->i_bool == 0)
-			simple_error(data);
-		else
-			args_error1(av, data);
-	}
-}
-
-void	stack_a_is_sorted(char **tab, t_data *data, t_list **a)
-{
-	t_list	*current;
-	int		greater;
-
-	greater = 0;
-	current = *a;
-	while (current->next != NULL)
-	{
-		if (current->content > current->next->content)
-		{
-			greater = 1;
-		}
-		current = current->next;
-	}
-	if (greater == 0)
-		already_sorted(tab, data, *a);
 }

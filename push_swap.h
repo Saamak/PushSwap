@@ -1,22 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/11 18:28:16 by ppitzini          #+#    #+#             */
+/*   Updated: 2024/02/11 20:19:41 by ppitzini         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
+# include "stdio.h"
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_list
 {
-	int		content;
-	int		index;
+	int				content;
+	int				index;
 	struct s_list	*next;
-} t_list;
+}	t_list;
 
 typedef struct data
 {
 	int		i_bool;
 	int		index;
 	int		argv_count;
-} t_data;
+}	t_data;
 
 // UTILS
 int		count_words(char const *s, char c);
@@ -29,7 +42,7 @@ int		ft_strlenn(const char *s);
 void	argv_counter(char **av, t_data *data);
 char	*ft_calloc(size_t nmemb, size_t size);
 void	free_tab(char **tab);
-void	display(t_list **a);
+void	success(char **tab, t_data *data, t_list *a, t_list *b);
 
 // LIST
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -41,6 +54,7 @@ void	first_put_lst(t_list **a, char **charnum_clean, t_data *data);
 char	**is_one_arg(int ac, char **av, t_data *data);
 void	free_list(t_list *head);
 t_data	*data_s_init(t_data *data);
+int		ft_lstsize(t_list *lst);
 
 // ERROR
 void	args_error1(char **tab, t_data *data);
@@ -49,22 +63,35 @@ void	double_error(char **tab, t_data *data, t_list *a);
 void	already_sorted(char **tab, t_data *data, t_list *a);
 
 //MOVEMENT
-void	swap(t_list **x);
+void	swap_a(t_list **a);
+void	swap_a(t_list **b);
 void	rotate(t_list **x);
-void	reverse_rotate(t_list **x);
+void	reverse_rotate_a(t_list **a);
+void	reverse_rotate_b(t_list **b);
 void	push_b(t_list **a, t_list **b);
 void	push_a(t_list **a, t_list **b);
 
 // PARSING
 int		check_double(t_list **a);
-void	check_nobody_else(char **av, t_data *data);
 void	check_only_num(char **char_av, t_data *data);
 void	stack_a_is_sorted(char **tab, t_data *data, t_list **a);
 void	check_sign(char **tab, t_data *data);
+void	check_quote(char **tab, t_data *data);
 
 // ALGLORY
-void	find_index(t_list **a, t_data *data);
+void	find_index(t_list **a);
 void	swap_index(t_list **a);
 int		check_sorted_index(t_list **a);
+int		is_sorted(t_list **a);
 
+void	simple_sort_hub(t_list **a, t_list **b, t_data *data, char **tab);
+void	sort_three(t_list **a);
+void	sort_four(t_list **a, t_list **b);
+void	sort_five(t_list **a, t_list **b);
+void	ft_sort_big_list(t_list **a, t_list **b);
+
+
+char	*join_av(char *args, char *av);
+char	**create_av(int ac, char **av, t_data *data);
+char	*ft_strjoin(char const *s1, char const *s2);
 #endif

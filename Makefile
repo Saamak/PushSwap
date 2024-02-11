@@ -6,19 +6,20 @@
 #    By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 16:43:36 by ppitzini          #+#    #+#              #
-#    Updated: 2024/02/10 16:44:36 by ppitzini         ###   ########.fr        #
+#    Updated: 2024/02/11 18:23:54 by ppitzini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC 	   = errors_args \
-			 ft_lst \
 			 push_swap \
 			 utils \
 			 utils_two \
 			 checks_args \
-			 movement \
+			 swap_push \
 			 free_funct \
 			 sort_algorythm \
+			 simple_sort \
+			 rotate \
 
 CC	= gcc
 

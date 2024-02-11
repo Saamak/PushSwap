@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:52:45 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/10 20:03:16 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/11 20:19:53 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 int	main(int ac, char **av)
 {
-	t_list	*a = NULL;
-	t_data	*data = NULL;
-	t_list	*b = NULL;
+	t_list	*a;
+	t_data	*data;
+	t_list	*b;
+	char	**list;
 
+	a = NULL;
+	b = NULL;
+	data = NULL;
 	data = data_s_init(data);
 	if (ac == 1)
 		simple_error(data);
-	av = is_one_arg(ac, av, data);
-	argv_counter(av, data);
-	check_sign(av, data);
-	first_put_lst(&a, av, data);
-	stack_a_is_sorted(av, data, &a);
+	list = create_av(ac, av, data);
+	check_sign(list, data);
+	first_put_lst(&a, list, data);
+	stack_a_is_sorted(list, data, &a);
 	if (check_double(&a))
-	{
-		double_error(av, data, a);
-	}
-	find_index(&a, data);
-	printf("A\n");
-	display(&a);
-	printf("B\n");
-	display(&b);
+		double_error(list, data, a);
+	find_index(&a);
+	if (data->argv_count <= 5)
+		simple_sort_hub(&a, &b, data, list);
+	ft_sort_big_list(&a, &b);
 	free(data);
 	free_list(a);
 	free_list(b);
@@ -50,15 +50,19 @@ t_data	*data_s_init(t_data *data)
 	return (data);
 }
 
-void	display(t_list **a)
+void	stack_a_is_sorted(char **tab, t_data *data, t_list **a)
 {
 	t_list	*current;
+	int		greater;
 
+	greater = 0;
 	current = *a;
-	while (current != NULL)
+	while (current->next != NULL)
 	{
-		printf("-- %d   index : ", current->content);
-		printf(" %d\n", current->index);
+		if (current->content > current->next->content)
+			greater = 1;
 		current = current->next;
 	}
+	if (greater == 0)
+		already_sorted(tab, data, *a);
 }

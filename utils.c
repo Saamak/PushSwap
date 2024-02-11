@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:01:16 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/10 20:05:58 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/11 19:51:16 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,4 +115,28 @@ void	check_sign(char **tab, t_data *data)
 		i++;
 		j = 0;
 	}
+}
+
+void	first_put_lst(t_list **a, char **charnum_clean, t_data *data)
+{
+	int		i;
+	t_list	*first;
+
+	i = 0;
+	*a = malloc(sizeof(t_list));
+	(*a)->content = ft_atoi(charnum_clean[i]);
+	(*a)->index = 0;
+	first = *a;
+	i++;
+	while (charnum_clean[i])
+	{
+		(*a)->next = malloc(sizeof(t_list));
+		*a = (*a)->next;
+		(*a)->content = ft_atoi(charnum_clean[i]);
+		data->index++;
+		(*a)->index = data->index;
+		i++;
+	}
+	(*a)->next = NULL;
+	(*a) = first;
 }
