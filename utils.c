@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:01:16 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/11 19:51:16 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/11 20:29:09 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,7 @@ void	check_sign(char **tab, t_data *data)
 		{
 			if ((tab[i][j] == '+' && tab[i][j + 1] == '+')
 				|| (tab[i][j] == '-' && tab[i][j + 1] == '-'))
-			{
-				if (data->i_bool == 1)
-					args_error1(tab, data);
-				else
-					simple_error(data);
-			}
+				args_error1(tab, data);
 			j++;
 		}
 		i++;

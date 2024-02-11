@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:52:45 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/11 20:19:53 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/11 20:30:51 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,13 @@ int	main(int ac, char **av)
 	if (data->argv_count <= 5)
 		simple_sort_hub(&a, &b, data, list);
 	ft_sort_big_list(&a, &b);
-	free(data);
-	free_list(a);
-	free_list(b);
+	success(list, data, a, b);
 	return (0);
 }
 
 t_data	*data_s_init(t_data *data)
 {
 	data = malloc(sizeof(t_data));
-	data->i_bool = 0;
 	data->argv_count = 0;
 	data->index = 0;
 	return (data);

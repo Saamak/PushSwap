@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:29:16 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/11 20:19:33 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/11 20:27:37 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,7 @@ void	check_only_num(char **char_av, t_data *data)
 			if (!((char_av[i][j] >= '0' && char_av[i][j] <= '9')
 				|| char_av[i][j] == ' '
 				|| char_av[i][j] == '+' || char_av[i][j] == '-'))
-			{
-				if (data->i_bool == 1)
-					args_error1(char_av, data);
-				else
-					simple_error(data);
-			}
+				args_error1(char_av, data);
 			j++;
 		}
 		i++;

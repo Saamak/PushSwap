@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 18:28:16 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/11 20:19:41 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/11 20:31:11 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct s_list
 
 typedef struct data
 {
-	int		i_bool;
 	int		index;
 	int		argv_count;
 }	t_data;
@@ -89,7 +88,6 @@ void	sort_three(t_list **a);
 void	sort_four(t_list **a, t_list **b);
 void	sort_five(t_list **a, t_list **b);
 void	ft_sort_big_list(t_list **a, t_list **b);
-
 
 char	*join_av(char *args, char *av);
 char	**create_av(int ac, char **av, t_data *data);
