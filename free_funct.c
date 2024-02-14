@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 23:05:18 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/11 20:52:44 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/14 01:52:36 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,12 @@ void	free_list(t_list **head)
 		free(current);
 		current = (*head);
 	}
+}
+
+void	args_error3(char **tab, t_data *data)
+{
+	write(2, "Error\n", 6);
+	free_tab(tab);
+	free(data);
+	exit(EXIT_FAILURE);
 }

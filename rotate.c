@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 18:24:05 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/11 18:24:34 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/14 01:57:06 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	rotate(t_list **x)
 	(*x)-> next = start;
 	start->next = NULL;
 	*x = tmp;
-	write(2, "ra\n", 3);
+	write(1, "ra\n", 3);
 }
 
 void	reverse_rotate_a(t_list **a)
@@ -38,7 +38,7 @@ void	reverse_rotate_a(t_list **a)
 	start = (*a)->next;
 	(*a)->next = NULL;
 	(*a) = start;
-	write(2, "rra\n", 4);
+	write(1, "rra\n", 4);
 }
 
 void	reverse_rotate_b(t_list **b)
@@ -52,5 +52,5 @@ void	reverse_rotate_b(t_list **b)
 	start = (*b)->next;
 	(*b)->next = NULL;
 	(*b) = start;
-	write(2, "rrb\n", 4);
+	write(1, "rrb\n", 4);
 }

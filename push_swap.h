@@ -6,15 +6,17 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 18:28:16 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/11 20:50:10 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/14 01:41:08 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -55,10 +57,11 @@ t_data	*data_s_init(t_data *data);
 int		ft_lstsize(t_list *lst);
 
 // ERROR
-void	args_error1(char **tab, t_data *data);
+void	args_error1(t_data *data);
 void	simple_error(t_data *data);
 void	double_error(char **tab, t_data *data, t_list **a);
 void	already_sorted(char **tab, t_data *data, t_list **a);
+void	args_error3(char **tab, t_data *data);
 
 //MOVEMENT
 void	swap_a(t_list **a);
@@ -75,6 +78,8 @@ void	check_only_num(char **char_av, t_data *data);
 void	stack_a_is_sorted(char **tab, t_data *data, t_list **a);
 void	check_sign(char **tab, t_data *data);
 void	check_quote(char **tab, t_data *data);
+void	check_empty(char **av, t_data *data);
+void	check_null(char **av, t_data *data);
 
 // ALGLORY
 void	find_index(t_list **a);

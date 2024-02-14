@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:52:45 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/11 20:50:55 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/13 22:27:05 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ int	main(int ac, char **av)
 	data = data_s_init(data);
 	if (ac == 1)
 		simple_error(data);
+	check_null(av, data);
+	check_empty(av, data);
 	list = create_av(ac, av, data);
-	check_sign(list, data);
+	check_only_num(list, data);
 	first_put_lst(&a, list, data);
-	stack_a_is_sorted(list, data, &a);
 	if (check_double(&a))
 		double_error(list, data, &a);
+	stack_a_is_sorted(list, data, &a);
 	find_index(&a);
 	if (data->argv_count <= 5)
 		simple_sort_hub(&a, &b, data, list);
@@ -62,4 +64,46 @@ void	stack_a_is_sorted(char **tab, t_data *data, t_list **a)
 	}
 	if (greater == 0)
 		already_sorted(tab, data, a);
+}
+
+void	check_empty(char **av, t_data *data)
+{
+	int	i;
+	int	j;
+	int	nb ;
+
+	nb = 0;
+	i = 0;
+	while (av[i])
+	{
+		j = 0;
+		while (av[i][j])
+		{
+			while (av[i][j] == ' ')
+				j++;
+			if (av[i][j] == '\0')
+				args_error1(data);
+			else
+			{
+				nb = 1;
+				break ;
+			}
+		}
+		i++;
+	}
+	if (nb == 0)
+		args_error1(data);
+}
+
+void	check_null(char **av, t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (av[i])
+	{
+		if (av[i][0] == '\0')
+			args_error1(data);
+		i++;
+	}
 }

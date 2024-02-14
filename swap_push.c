@@ -6,7 +6,7 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:08:09 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/11 18:24:31 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/14 01:56:56 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	swap_b(t_list **b)
 	first->next = first->next->next;
 	second->next = (*b);
 	(*b) = second;
-	write(2, "sb\n", 3);
+	write(1, "sb\n", 3);
 }
 
 void	swap_a(t_list **a)
@@ -35,7 +35,7 @@ void	swap_a(t_list **a)
 	first->next = first->next->next;
 	second->next = (*a);
 	(*a) = second;
-	write(2, "sa\n", 3);
+	write(1, "sa\n", 3);
 }
 
 void	push_b(t_list **a, t_list **b)
@@ -46,7 +46,7 @@ void	push_b(t_list **a, t_list **b)
 	*a = (*a)->next;
 	topa->next = *b;
 	*b = topa;
-	write(2, "pb\n", 3);
+	write(1, "pb\n", 3);
 }
 
 void	push_a(t_list **a, t_list **b)
@@ -57,5 +57,5 @@ void	push_a(t_list **a, t_list **b)
 	*b = (*b)->next;
 	topb->next = *a;
 	*a = topb;
-	write(2, "pa\n", 3);
+	write(1, "pa\n", 3);
 }
