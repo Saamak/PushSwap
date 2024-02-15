@@ -6,13 +6,13 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:01:16 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/14 01:52:59 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:41:14 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(char *str, t_data *data, t_list **a, char **tab)
 {
 	int				i;
 	long long int	result;
@@ -23,8 +23,6 @@ int	ft_atoi(char *str)
 	sign = 1;
 	while (str[i] != '\0')
 	{
-		while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-			i++;
 		if (str[i] == '-' || str[i] == '+')
 		{
 			if (str[i] == '-')
@@ -36,6 +34,8 @@ int	ft_atoi(char *str)
 			result = result * 10 + str[i] - 48;
 			i++;
 		}
+		if ((result * sign) > INT_MAX || (result * sign) < INT_MIN)
+			double_error(tab, data, a);
 		return (result * sign);
 	}
 	return (0);
@@ -108,7 +108,8 @@ void	check_sign(char **tab, t_data *data)
 			if ((tab[i][j] >= '0' && tab[i][j] <= '9')
 				&& (tab[i][j + 1] == '+' || tab[i][j + 1] == '-'))
 				args_error3(tab, data);
-			if ((tab[i][j] == '+') && (!(tab[i][j + 1] >= '0' && tab[i][j + 1] <= '9')))
+			if ((tab[i][j] == '+' || (tab[i][j] == '-'))
+				&& (!(tab[i][j + 1] >= '0' && tab[i][j + 1] <= '9')))
 				args_error3(tab, data);
 			j++;
 		}
@@ -124,15 +125,17 @@ void	first_put_lst(t_list **a, char **charnum_clean, t_data *data)
 
 	i = 0;
 	*a = malloc(sizeof(t_list));
-	(*a)->content = ft_atoi(charnum_clean[i]);
-	(*a)->index = 0;
 	first = *a;
+	(*a)->next = NULL;
+	(*a)->content = ft_atoi(charnum_clean[i], data, &first, charnum_clean);
+	(*a)->index = 0;
 	i++;
 	while (charnum_clean[i])
 	{
 		(*a)->next = malloc(sizeof(t_list));
 		*a = (*a)->next;
-		(*a)->content = ft_atoi(charnum_clean[i]);
+		(*a)->next = NULL;
+		(*a)->content = ft_atoi(charnum_clean[i], data, &first, charnum_clean);
 		data->index++;
 		(*a)->index = data->index;
 		i++;
@@ -140,4 +143,3 @@ void	first_put_lst(t_list **a, char **charnum_clean, t_data *data)
 	(*a)->next = NULL;
 	(*a) = first;
 }
-

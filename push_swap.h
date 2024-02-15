@@ -6,14 +6,13 @@
 /*   By: ppitzini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 18:28:16 by ppitzini          #+#    #+#             */
-/*   Updated: 2024/02/14 01:41:08 by ppitzini         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:19:03 by ppitzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
@@ -34,7 +33,7 @@ typedef struct data
 // UTILS
 int		count_words(char const *s, char c);
 char	**ft_split(char *s, char c);
-int		ft_atoi(char *str);
+int		ft_atoi(char *str, t_data *data, t_list **a, char **tab);
 char	*ft_substr(char *s, int start, int len);
 int		check(char *s, int start, int len);
 int		ft_strlen(long int n);
